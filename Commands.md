@@ -669,7 +669,7 @@ db.songs.find({ album_id: null }).projection({ title: 1 })
 db.albums.find()
 ```
 
-- Liste des albums de l'artist dont l'identifiant est :
+- Liste des artistes avec leurs albums :
 ```
 db.artists.aggregate([
   {
@@ -683,41 +683,40 @@ db.artists.aggregate([
 ])
 ```
 
-- Liste des artists par nombre d'albums décroissant
+- Liste des abonnés (sans les administrateurs)
 ```
-db.artists.aggregate([
-  {
-    $lookup: {
-      from: "albums",
-      localField: "_id",
-      foreignField: "authors",
-      as: "albums_by_artists"
-    }
-  }
-]).count('albums_by_artists')
+db.users.find({ "role_id": ObjectId('64061c4c1f567840c6d0143d') })
 ```
 
-- Liste des utilisateurs pour un role spécifique
+- Création de playlist pour un utilisateur
 ```
-db.songs.find({}).projection({}).sort({}).skip({}).limit()
-```
-
-- Enregistrer des albums favoris pour un utilisateur
-```
-db.songs.find({}).projection({}).sort({}).skip({}).limit()
-```
-
-- Liste des albums favoris d'un utilisateur
-```
-db.songs.find({}).projection({}).sort({}).skip({}).limit()
+db.playlists.insert({
+  "name": "Mes Favoris Rock",
+  "slug": "mes-favoris-rock",
+  "albums": [
+    ObjectId('6406caff1f567840c6d01455'), 
+    ObjectId('6406caff1f567840c6d01459'), 
+    ObjectId('6406caff1f567840c6d01458'), 
+  ]
+})
 ```
 
-- Liste des albums datant de 2020 (par exemple)
+- Mise à jour de playlist dont l'id vaut : 
 ```
-db.songs.find({}).projection({}).sort({}).skip({}).limit()
+db.playlists.update({ "_id": ObjectId('640730761f567840c6d0147c') }, { $push :{ "albums": ObjectId('6406caff1f567840c6d01456') } })
 ```
 
-- Top N des musiques les plus lues
+- Liste des playlists d'un utilisateur
 ```
-db.songs.find({}).projection({}).sort({}).skip({}).limit()
+db.playlists.find({ "user_id": ObjectId('640622721f567840c6d01446') }).pretty()
+```
+
+- Liste des albums datant de 2004 (par exemple)
+```
+db.albums.find({ "year": "2004" })
+```
+
+- Top 10 des musiques les plus lues
+```
+db.songs.find().sort({ "read_time": -1 }).limit(10)
 ```
