@@ -693,6 +693,7 @@ db.users.find({ "role_id": ObjectId('64061c4c1f567840c6d0143d') })
 db.playlists.insert({
   "name": "Mes Favoris Rock",
   "slug": "mes-favoris-rock",
+  "user_id": ObjectId('640622721f567840c6d01446'),
   "albums": [
     ObjectId('6406caff1f567840c6d01455'), 
     ObjectId('6406caff1f567840c6d01459'), 
