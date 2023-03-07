@@ -1,0 +1,63 @@
+{
+  "albums": {
+    "title": "",
+    "slug": "",
+    "description": "",
+    "year": "",
+    "image": "",
+    "authors": [],
+    "tags": [],
+    "songs": [],
+    "created_at": "",
+    "updated_at": ""
+  },
+  "artists": {
+    "name": "",
+    "slug": "",
+    "biography": "",
+    "country": "",
+    "registered_at": "",
+    "updated_at": ""
+  },
+  "permissions": {
+    "name": "",
+    "slug": "",
+    "role_id": ""
+  },
+  "playlists": {
+    "title": "",
+    "slug": "",
+    "created_by": "",
+    "created_at": "",
+    "updated_at": ""
+  },
+  "role": {
+    "name": "",
+    "slug": ""
+  },
+  "songs": {
+    "title": "",
+    "url": "",
+    "duration": "",
+    "size": "",
+    "read_time": "",
+    "album_id": "",
+    "registerd_at": "",
+    "registerd_by": ""
+  },
+  "tags": {
+    "name": "",
+    "slug": ""
+  },
+  "users": {
+    "username": "",
+    "email": "",
+    "password": "",
+    "registered_at": "",
+    "photo": "",
+    "updated_at": "",
+    "role_id": "",
+    "playlists": [],
+    "bookmarks": []
+  }
+}
