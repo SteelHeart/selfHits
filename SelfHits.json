@@ -19,21 +19,12 @@
     "registered_at": "",
     "updated_at": ""
   },
-  "permissions": {
-    "name": "",
-    "slug": "",
-    "role_id": ""
-  },
   "playlists": {
     "title": "",
     "slug": "",
     "created_by": "",
     "created_at": "",
     "updated_at": ""
-  },
-  "role": {
-    "name": "",
-    "slug": ""
   },
   "songs": {
     "title": "",
@@ -56,7 +47,7 @@
     "registered_at": "",
     "photo": "",
     "updated_at": "",
-    "role_id": "",
+    "role": "",
     "playlists": [],
     "bookmarks": []
   }

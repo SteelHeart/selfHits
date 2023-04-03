@@ -46,17 +46,6 @@ db.roles.insert([
 ```
 
 ```
-db.permissions.insert([
-  {"name": "Create Album", "slug": "created-album", "roles": [ObjectId("64061c4c1f567840c6d0143c")] },
-  {"name": "Update Album", "slug": "update-album", "roles": [ObjectId("64061c4c1f567840c6d0143c")] },
-  {"name": "Delete Album", "slug": "delete-album", "roles": [ObjectId("64061c4c1f567840c6d0143c")] },
-  {"name": "Create Playlist", "slug": "create-playlist", "roles": [ObjectId("64061c4c1f567840c6d0143c"), ObjectId("64061c4c1f567840c6d0143d")] },
-  {"name": "Update Playlist", "slug": "update-playlist", "roles": [ObjectId("64061c4c1f567840c6d0143c"), ObjectId("64061c4c1f567840c6d0143d")] },
-  {"name": "Delete Playlist", "slug": "delete-playlist", "roles": [ObjectId("64061c4c1f567840c6d0143c"), ObjectId("64061c4c1f567840c6d0143d")] },
-])
-```
-
-```
 db.users.insert([
   {
     "username": "Steelheart",
@@ -65,7 +54,7 @@ db.users.insert([
     "registered_at": new Date(),
     "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.recia.fr%2Fdefault-avatar-300x300%2F&psig=AOvVaw1Hw8OW-VYNSM7u8s5nURZ3&ust=1678209924999000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNCW-qXpx_0CFQAAAAAdAAAAABAJ",
     "updated_at": "",
-    "role_id": ObjectId('64061c4c1f567840c6d0143c'),
+    "role": "admin",
     "playlists": [],
     "bookmarks": [] 
   },
@@ -77,7 +66,7 @@ db.users.insert([
     "registered_at": new Date(),
     "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.recia.fr%2Fdefault-avatar-300x300%2F&psig=AOvVaw1Hw8OW-VYNSM7u8s5nURZ3&ust=1678209924999000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNCW-qXpx_0CFQAAAAAdAAAAABAJ",
     "updated_at": "",
-    "role_id": ObjectId('64061c4c1f567840c6d0143c'),
+    "role": "user",
     "playlists": [],
     "bookmarks": [] 
   },
@@ -89,7 +78,7 @@ db.users.insert([
     "registered_at": new Date(),
     "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.recia.fr%2Fdefault-avatar-300x300%2F&psig=AOvVaw1Hw8OW-VYNSM7u8s5nURZ3&ust=1678209924999000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNCW-qXpx_0CFQAAAAAdAAAAABAJ",
     "updated_at": "",
-    "role_id": ObjectId('64061c4c1f567840c6d0143d'),
+    "role": "user",
     "playlists": [],
     "bookmarks": [] 
   },
@@ -101,7 +90,7 @@ db.users.insert([
     "registered_at": new Date(),
     "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.recia.fr%2Fdefault-avatar-300x300%2F&psig=AOvVaw1Hw8OW-VYNSM7u8s5nURZ3&ust=1678209924999000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNCW-qXpx_0CFQAAAAAdAAAAABAJ",
     "updated_at": "",
-    "role_id": ObjectId('64061c4c1f567840c6d0143d'),
+    "role": "user",
     "playlists": [],
     "bookmarks": [] 
   }
@@ -110,13 +99,13 @@ db.users.insert([
 
 ```
 db.tags.insert([
-  {"name": "Gospel", "slug": "gospel" },
-  {"name": "Groove", "slug": "groove" },
-  {"name": "Rap", "slug": "rap" },
-  {"name": "Rock and roll", "slug": "rock-and-roll" },
-  {"name": "Punk", "slug": "punk" },
-  {"name": "Folk", "slug": "folk" },
-  {"name": "Hip-Hop", "slug": "hip-hop" }
+  {"name": "Gospel", ref: 1,  "slug": "gospel" },
+  {"name": "Groove", ref: 2,  "slug": "groove" },
+  {"name": "Rap", ref: 3,  "slug": "rap" },
+  {"name": "Rock and roll", ref: 4,  "slug": "rock-and-roll" },
+  {"name": "Punk", ref: 5,  "slug": "punk" },
+  {"name": "Folk", ref: 6,  "slug": "folk" },
+  {"name": "Hip-Hop", ref: 7,  "slug": "hip-hop" }
 ])
 ```
 
@@ -124,6 +113,7 @@ db.tags.insert([
 db.artists.insert([
   {
     "name": "Elvis Presley", 
+    "ref": 1,
     "slug": "elvis-presley", 
     "biography": "Short professional bios are concise paragraphs that summarise a person's professional background.", 
     "country": "", 
@@ -133,6 +123,7 @@ db.artists.insert([
 
   {
     "name": "Michael Jackson", 
+    "ref": 2,
     "slug": "michael-jackson", 
     "biography": "Short professional bios are concise paragraphs that summarise a person's professional background.", 
     "country": "", 
@@ -142,6 +133,7 @@ db.artists.insert([
 
   {
     "name": "Céline Dion", 
+    "ref": 1,
     "slug": "celine-dion", 
     "biography": "Short professional bios are concise paragraphs that summarise a person's professional background.", 
     "country": "", 
@@ -151,6 +143,7 @@ db.artists.insert([
 
   {
     "name": "Bob Marley", 
+    "ref": 3,
     "slug": "bob-marley", 
     "biography": "Short professional bios are concise paragraphs that summarise a person's professional background.", 
     "country": "", 
@@ -160,6 +153,7 @@ db.artists.insert([
 
   {
     "name": "Stevie Wonder", 
+    "ref": 4,
     "slug": "stevie-wonder", 
     "biography": "Short professional bios are concise paragraphs that summarise a person's professional background.", 
     "country": "", 
@@ -169,6 +163,7 @@ db.artists.insert([
 
   {
     "name": "James Brown", 
+    "ref": 5,
     "slug": "james-brown", 
     "biography": "Short professional bios are concise paragraphs that summarise a person's professional background.", 
     "country": "", 
@@ -184,15 +179,18 @@ db.albums.insert([
   {
     "title": "A New Day : Live in Las Vegas	", 
     "slug": "a-new-day-live-in-las-vegas", 
+    "ref": 1,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eaque accusantium magnam quae dolor sit sunt blanditiis, repellendus pariatur doloribus? Asperiores molestiae debitis deserunt quas voluptate alias sint cum reprehenderit.", 
     "year": "2004", 
     "image": "https://www.francebleu.fr/s3/cruiser-production/2017/07/0c3b29c2-d074-4359-b6bf-e90242b9b654/1200x680_un_peu_de_nous1.jpg", 
     "authors": [
-      ObjectId('640624601f567840c6d01451')
+      {"ref": 1},
+      {"ref": 2}
     ], 
     "tags": [
-      ObjectId('640623181f567840c6d01449'),
-      ObjectId('640623181f567840c6d0144d'),
+      {ref: 2},
+      {ref: 4},
+      {ref: 7},
     ], 
     "created_at": new Date(), 
     "updated_at": "" 
@@ -200,15 +198,18 @@ db.albums.insert([
   {
     "title": "Au cœur du Stade", 
     "slug": "au-cœur-du-stade", 
+    "ref": 2,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eaque accusantium magnam quae dolor sit sunt blanditiis, repellendus pariatur doloribus? Asperiores molestiae debitis deserunt quas voluptate alias sint cum reprehenderit.", 
     "year": "1999", 
     "image": "https://www.francebleu.fr/s3/cruiser-production/2017/07/0c3b29c2-d074-4359-b6bf-e90242b9b654/1200x680_un_peu_de_nous1.jpg", 
     "authors": [
-      ObjectId('640624601f567840c6d01451')
+      {"ref": 4},
+      {"ref": 2}
     ], 
     "tags": [
-      ObjectId('640623181f567840c6d0144d'),
-      ObjectId('640623181f567840c6d01449'),
+      {ref: 1},
+      {ref: 4},
+      {ref: 9},
     ], 
     "created_at": new Date(), 
     "updated_at": "" 
@@ -216,15 +217,18 @@ db.albums.insert([
   {
     "title": "Du soleil au cœur", 
     "slug": "du-soleil-au-cœur", 
+    "ref": 3,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eaque accusantium magnam quae dolor sit sunt blanditiis, repellendus pariatur doloribus? Asperiores molestiae debitis deserunt quas voluptate alias sint cum reprehenderit.", 
     "year": "1983", 
     "image": "https://www.francebleu.fr/s3/cruiser-production/2017/07/0c3b29c2-d074-4359-b6bf-e90242b9b654/1200x680_un_peu_de_nous1.jpg", 
     "authors": [
-      ObjectId('640624601f567840c6d01451')
+      {"ref": 1},
+      {"ref": 5}
     ], 
     "tags": [
-      ObjectId('640623181f567840c6d01448'),
-      ObjectId('640623181f567840c6d01449'),
+      {ref: 11},
+      {ref: 4},
+      {ref: 6},
     ], 
     "created_at": new Date(), 
     "updated_at": "" 
@@ -233,15 +237,18 @@ db.albums.insert([
   {
     "title": "Got to Be There", 
     "slug": "got-to-be-there", 
+    "ref": 4,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eaque accusantium magnam quae dolor sit sunt blanditiis, repellendus pariatur doloribus? Asperiores molestiae debitis deserunt quas voluptate alias sint cum reprehenderit.", 
     "year": "1972", 
     "image": "https://www.lalibre.be/resizer/uhhb-M5SxVR4u1laSq-txvZNp4k=/1200x800/filters:format(jpeg):focal(4052x1303:4062x1293)/cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/OXUVNUJKYZAIZJG4754UBU3MZE.jpg", 
     "authors": [
-      ObjectId('640624601f567840c6d01450'),
+      {"ref": 4},
+      {"ref": 1}
     ], 
     "tags": [
-      ObjectId('6400e04b12c81df5e36fc4e3'),
-      ObjectId('640623181f567840c6d0144e'),
+      {ref: 10},
+      {ref: 3},
+      {ref: 7},
     ], 
     "created_at": new Date(), 
     "updated_at": "" 
@@ -249,15 +256,18 @@ db.albums.insert([
   {
     "title": "Ben", 
     "slug": "ben", 
+    "ref": 5,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eaque accusantium magnam quae dolor sit sunt blanditiis, repellendus pariatur doloribus? Asperiores molestiae debitis deserunt quas voluptate alias sint cum reprehenderit.", 
     "year": "1972", 
     "image": "https://www.lalibre.be/resizer/uhhb-M5SxVR4u1laSq-txvZNp4k=/1200x800/filters:format(jpeg):focal(4052x1303:4062x1293)/cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/OXUVNUJKYZAIZJG4754UBU3MZE.jpg", 
     "authors": [
-      ObjectId('640624601f567840c6d01450'),
+      {"ref": 3},
+      {"ref": 5}
     ], 
     "tags": [
-      ObjectId('6400e04b12c81df5e36fc4e3'),
-      ObjectId('640623181f567840c6d0144e'),
+      {ref: 7},
+      {ref: 4},
+      {ref: 11},
     ], 
     "created_at": new Date(), 
     "updated_at": "" 
@@ -265,15 +275,18 @@ db.albums.insert([
   {
     "title": "Music & Me", 
     "slug": "music-&-me", 
+    "ref": 6,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eaque accusantium magnam quae dolor sit sunt blanditiis, repellendus pariatur doloribus? Asperiores molestiae debitis deserunt quas voluptate alias sint cum reprehenderit.", 
     "year": "1973", 
     "image": "https://www.lalibre.be/resizer/uhhb-M5SxVR4u1laSq-txvZNp4k=/1200x800/filters:format(jpeg):focal(4052x1303:4062x1293)/cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/OXUVNUJKYZAIZJG4754UBU3MZE.jpg", 
     "authors": [
-      ObjectId('640624601f567840c6d01450'),
+      {"ref": 3},
+      {"ref": 2}
     ], 
     "tags": [
-      ObjectId('6400e04b12c81df5e36fc4e3'),
-      ObjectId('640623181f567840c6d0144e'),
+      {ref: 3},
+      {ref: 8},
+      {ref: 13},
     ], 
     "created_at": new Date(), 
     "updated_at": "" 
@@ -289,7 +302,7 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "3 min", 
     "size": "3.2", 
-    "read_time": "15", 
+    "read_time": 15, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -299,7 +312,7 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "3 min", 
     "size": "3.2", 
-    "read_time": "15", 
+    "read_time": 15, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -309,7 +322,7 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "3 min", 
     "size": "3.2", 
-    "read_time": "15", 
+    "read_time": 15, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -319,8 +332,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01455'), 
+    "read_time": 15, 
+    "album_id": {ref: 6}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -330,8 +343,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01456'), 
+    "read_time": 15, 
+    "album_id": {ref: 8}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -341,8 +354,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01457'), 
+    "read_time": 15, 
+    "album_id": {ref: 3}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -352,8 +365,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01458'), 
+    "read_time": 15, 
+    "album_id": {ref: 4}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -363,8 +376,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01459'), 
+    "read_time": 15, 
+    "album_id": {ref: 1}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -374,8 +387,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d0145a'), 
+    "read_time": 15, 
+    "album_id": {ref: 7}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -385,8 +398,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01455'), 
+    "read_time": 15, 
+    "album_id": {ref: 8}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -396,8 +409,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d0145a'), 
+    "read_time": 15, 
+    "album_id": {ref: 9}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -407,8 +420,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01456'), 
+    "read_time": 15, 
+    "album_id": {ref: 5}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -418,8 +431,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01457'), 
+    "read_time": 15, 
+    "album_id": {ref: 12}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -428,19 +441,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01455'), 
-    "registerd_at": new Date(), 
-    "registerd_by": "" 
-  },
-
-  {
-    "title": "New single", 
-    "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
-    "duration": "4 min", 
-    "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01456'), 
+    "read_time": 15, 
+    "album_id": {ref: 4}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -450,8 +452,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01457'), 
+    "read_time": 201, 
+    "album_id": {ref: 6}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -461,8 +463,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01458'), 
+    "read_time": 15, 
+    "album_id": {ref: 8}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -472,8 +474,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01459'), 
+    "read_time": 807, 
+    "album_id": {ref: 1}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -483,8 +485,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d0145a'), 
+    "read_time": 15, 
+    "album_id": {ref: 3}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -494,8 +496,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01455'), 
+    "read_time": 502, 
+    "album_id": {ref: 4}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -505,8 +507,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d0145a'), 
+    "read_time": 15, 
+    "album_id": {ref: 2}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -516,8 +518,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01456'), 
+    "read_time": 5, 
+    "album_id": {ref: 7}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -527,18 +529,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01457'), 
-    "registerd_at": new Date(), 
-    "registerd_by": "" 
-  },
-  {
-    "title": "New single", 
-    "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
-    "duration": "4 min", 
-    "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01455'), 
+    "read_time": 65, 
+    "album_id": {ref: 11}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -548,8 +540,18 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01456'), 
+    "read_time": 15, 
+    "album_id": {ref: 10}, 
+    "registerd_at": new Date(), 
+    "registerd_by": "" 
+  },
+  {
+    "title": "New single", 
+    "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
+    "duration": "4 min", 
+    "size": "3.6", 
+    "read_time": 415, 
+    "album_id": {ref: 6}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -559,8 +561,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01457'), 
+    "read_time": 15, 
+    "album_id": {ref: 1}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -570,8 +572,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01458'), 
+    "read_time": 15, 
+    "album_id": {ref: 7}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -581,8 +583,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01459'), 
+    "read_time": 15, 
+    "album_id": {ref: 8}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -592,8 +594,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d0145a'), 
+    "read_time": 121, 
+    "album_id": {ref: 12}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -603,8 +605,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01455'), 
+    "read_time": 15, 
+    "album_id": {ref: 2}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -614,8 +616,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d0145a'), 
+    "read_time": 12, 
+    "album_id": {ref: 3}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -625,8 +627,8 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01456'), 
+    "read_time": 15, 
+    "album_id": {ref: 7}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -636,8 +638,19 @@ db.songs.insert([
     "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
     "duration": "4 min", 
     "size": "3.6", 
-    "read_time": "15", 
-    "album_id": ObjectId('6406caff1f567840c6d01457'), 
+    "read_time": 25, 
+    "album_id": {ref: 7}, 
+    "registerd_at": new Date(), 
+    "registerd_by": "" 
+  },
+
+  {
+    "title": "New single", 
+    "url": "https://www.rireetchansons.fr/podcasts/lappel-trop-con/augmentation-fromagere-l-appel-trop-con-de-rire-chansons-1", 
+    "duration": "4 min", 
+    "size": "3.6", 
+    "read_time": 105, 
+    "album_id": {ref: 7}, 
     "registerd_at": new Date(), 
     "registerd_by": "" 
   },
@@ -669,15 +682,23 @@ db.songs.find({ album_id: null }).projection({ title: 1 })
 db.albums.find()
 ```
 
-- Liste des artistes avec leurs albums :
+- Liste des albums avec leurs authors et categories (tags) associées :
 ```
-db.artists.aggregate([
+db.albums.aggregate([
   {
     $lookup: {
-      from: "albums",
-      localField: "_id",
-      foreignField: "authors",
-      as: "albums_by_artists"
+      from: "artists",
+      "let": {"uid": "$ref"},
+      pipeline: [
+        {
+          "$match": {
+            "$expr": {
+              "$in": ["$$uid", "$authors.ref"],  
+            },
+          },
+        },
+      ],
+      as: "registered_albums"
     }
   }
 ])
@@ -685,26 +706,31 @@ db.artists.aggregate([
 
 - Liste des abonnés (sans les administrateurs)
 ```
-db.users.find({ "role_id": ObjectId('64061c4c1f567840c6d0143d') })
+db.users.find({ "role": "user") })
 ```
 
 - Création de playlist pour un utilisateur
 ```
-db.playlists.insert({
+db.playlists.insertOne({
   "name": "Mes Favoris Rock",
   "slug": "mes-favoris-rock",
   "user_id": ObjectId('640622721f567840c6d01446'),
   "albums": [
-    ObjectId('6406caff1f567840c6d01455'), 
-    ObjectId('6406caff1f567840c6d01459'), 
-    ObjectId('6406caff1f567840c6d01458'), 
+    {ref: 2},
+    {ref: 4},
+    {ref: 7}, 
   ]
 })
 ```
 
 - Mise à jour de playlist dont l'id vaut : 
 ```
-db.playlists.update({ "_id": ObjectId('640730761f567840c6d0147c') }, { $push :{ "albums": ObjectId('6406caff1f567840c6d01456') } })
+db.playlists.updateOne({ 
+  "_id": ObjectId('64074d9b1f567840c6d014c8') 
+  }, 
+  { 
+    $push :{ "albums": {ref: 7} } 
+  })
 ```
 
 - Liste des playlists d'un utilisateur
@@ -719,5 +745,10 @@ db.albums.find({ "year": "2004" })
 
 - Top 10 des musiques les plus lues
 ```
-db.songs.find().sort({ "read_time": -1 }).limit(10)
+db.songs.find().projection({"_id": 0, "title": 1, "read_time": 1}).sort({ "read_time": -1}).limit(10)
+```
+
+-	Requête de lecture étoile : Recherche d’albums et/ou de titres spécifiques
+```
+db.songs.find().limit(10)
 ```
